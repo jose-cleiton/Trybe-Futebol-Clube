@@ -1,20 +1,8 @@
-
-import { DataTypes, Model } from 'sequelize/types';
+import { DataTypes, Model } from 'sequelize';
 import db from '.';
-import iUser from '../interface/iUser';
 
-
-
-
-class User extends Model implements iUser {
-  id: number;
-  username: string;
-  role: string;
-  email: string;
-  password: string;
-}
-
-User.init(
+class users extends Model {}
+users.init(
   {
     id: {
       allowNull: false,
@@ -47,5 +35,4 @@ User.init(
     timestamps: false,
   },
 );
-
-export default User;
+export default users;
