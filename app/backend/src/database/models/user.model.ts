@@ -1,11 +1,11 @@
 
 import { DataTypes, Model } from 'sequelize/types';
 import db from '.';
-import iUser from '../interface/iUser';
 
 
 
-class User extends Model implements iUser {
+
+class User extends Model  {
   id: number;
   username: string;
   role: string;
