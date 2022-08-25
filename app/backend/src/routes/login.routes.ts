@@ -5,6 +5,6 @@ const loginRoutes = Router();
 
 const controllers = new LoginController();
 
-loginRoutes.post('/', (req, res, next) => controllers.login(req, res, next));
+loginRoutes.post('/', (req, res) => controllers.login(req, res));
 
 export default loginRoutes;
