@@ -8,12 +8,12 @@
     "method": "POST",
     "sortNum": 10000,
     "created": "2022-08-25T13:18:31.430Z",
-    "modified": "2022-08-25T19:45:05.888Z",
+    "modified": "2022-08-26T16:58:23.371Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"email\": \"adm\",\n  \"password\":\"$2a$08$xi.Hxk1czAO0nZR..B393u10aED0RQ1N3PAEXQ7HxtLjKPEZBu.PW\"\n}",
+      "raw": "{\r\n      \"email\": \"admin@admin.com\",\r\n      \"password\": \"secret_admin\"  \r\n  \r\n}",
       "form": []
     },
     "tests": []

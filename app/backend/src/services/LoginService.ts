@@ -1,9 +1,9 @@
 import Login, { LoginData, strVoid } from '../interfaces/Login';
-import users from '../database/models/users.model';
+import Users from '../database/models/users.model';
 import JwToken from '../helprs/JwToken';
 
 export default class loginService implements Login {
-  constructor(private user = users) {
+  constructor(private user = Users) {
     this.user = user;
   }
 
