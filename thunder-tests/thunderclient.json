@@ -4,17 +4,29 @@
     "colId": "77c70eaa-5f66-4028-960a-70f39168f900",
     "containerId": "",
     "name": "Login",
-    "url": "localhost:3001/login",
-    "method": "POST",
+    "url": "localhost:3001/login/validate",
+    "method": "GET",
     "sortNum": 10000,
     "created": "2022-08-25T13:18:31.430Z",
-    "modified": "2022-08-26T16:58:23.371Z",
+    "modified": "2022-08-26T19:31:18.926Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\r\n      \"email\": \"admin@admin.com\",\r\n      \"password\": \"secret_admin\"  \r\n  \r\n}",
+      "raw": "{\n      \"email\": \"admin@admin.com\",\n      \"password\": \"secret_admin\"  \n  \n}",
       "form": []
+    },
+    "auth": {
+      "type": "oauth2",
+      "oauth2": {
+        "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoxLCJ1c2VybmFtZSI6IkFkbWluIiwicm9sZSI6ImFkbWluIiwiZW1haWwiOiJhZG1pbkBhZG1pbi5jb20iLCJwYXNzd29yZCI6IiQyYSQwOCR4aS5IeGsxY3pBTzBuWlIuLkIzOTN1MTBhRUQwUlExTjNQQUVYUTdIeHRMaktQRVpCdS5QVyJ9LCJpYXQiOjE2NjE1MzkwOTMsImV4cCI6MTY2MjE0Mzg5M30.1_3SBT5YBfC1zXloI9grMq3zXnBl4mxSWOTwORNazjw",
+        "grantType": "authorization_code_with_pkce",
+        "tokenUrl": "",
+        "clientId": "",
+        "clientSecret": "",
+        "clientAuth": "in-header",
+        "challengeMethod": "S256"
+      }
     },
     "tests": []
   }

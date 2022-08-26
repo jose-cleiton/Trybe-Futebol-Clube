@@ -7,14 +7,14 @@ export default class loginService implements Login {
     this.user = user;
   }
 
-  async login(data: LoginData): Promise<strVoid> {
+  login = async (data: LoginData): Promise<strVoid> => {
     const user = await this.user.findOne({ where: { email: data.email } });
     if (!user) {
       return 'null';
     }
     const token = JwToken.create(user);
     return token;
-  }
+  };
 
   static validate(token: string) {
     const payload = JwToken.verify(token);
