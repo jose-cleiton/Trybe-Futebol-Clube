@@ -22,11 +22,11 @@ export default class LoginController {
 
   static async loginValidation(req: Request, res: Response) {
     const token = req.headers.authorization;
-    let role = '';
-    if (token) {
-      role = LoginService.validate(token);
+
+    if (!token) {
+      throw new Error(401, 'Token invalid');
     }
-    if (!token) return res.status(401).json({ message: 'Token invalid' });
+    const role = LoginService.validate(token);
     return res.status(200).json({ role });
   }
 }
