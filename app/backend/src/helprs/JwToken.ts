@@ -1,6 +1,8 @@
 import * as jwt from 'jsonwebtoken';
 import * as dotenv from 'dotenv';
+import { Request } from 'express';
 import User from '../interfaces/User';
+import Error from '../Middleware/ErrorType';
 
 dotenv.config();
 
@@ -22,4 +24,17 @@ export default class JwToken {
     const { role } = data;
     return role;
   }
+
+  jwtValidation = (req: Request) => {
+    const token = req.headers.authorization;
+    if (!token) {
+      throw new Error(401, 'Token must be a valid token');
+    }
+    if (token) {
+      const payload = JwToken.verify(token);
+      if (!payload || payload === null) {
+        throw new Error(401, 'Token must be a valid token');
+      }
+    }
+  };
 }
