@@ -29,5 +29,19 @@
       }
     },
     "tests": []
+  },
+  {
+    "_id": "2ac74d6b-8e5e-43f8-bc8f-6dd1888fe03f",
+    "colId": "77c70eaa-5f66-4028-960a-70f39168f900",
+    "containerId": "",
+    "name": "teamsRoutes",
+    "url": "localhost:3001/teams/2",
+    "method": "GET",
+    "sortNum": 20000,
+    "created": "2022-08-27T10:07:55.185Z",
+    "modified": "2022-08-27T10:55:52.517Z",
+    "headers": [],
+    "params": [],
+    "tests": []
   }
 ]
