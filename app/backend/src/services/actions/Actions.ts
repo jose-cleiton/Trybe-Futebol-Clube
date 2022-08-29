@@ -66,21 +66,21 @@ export default class Actions {
     const point = victories * 3 + draws;
     return point;
   };
-   orderTeams = (a: Leaderboard, b: Leaderboard) => {
-    if (a.totalPoints < b.totalPoints) { return 1; }
-    if (a.totalPoints > b.totalPoints) { return -1; }
+   orderTeams = (timeA: Leaderboard, timeB: Leaderboard) => {
+    if (timeA.totalPoints < timeB.totalPoints) { return 1; }
+    if (timeA.totalPoints > timeB.totalPoints) { return -1; }
   
-    if (a.totalVictories < b.totalVictories) { return 1; }
-    if (a.totalVictories > b.totalVictories) { return -1; }
+    if (timeA.totalVictories < timeB.totalVictories) { return 1; }
+    if (timeA.totalVictories > timeB.totalVictories) { return -1; }
   
-    if (a.goalsBalance < b.goalsBalance) { return 1; }
-    if (a.goalsBalance > b.goalsBalance) { return -1; }
+    if (timeA.goalsBalance < timeB.goalsBalance) { return 1; }
+    if (timeA.goalsBalance > timeB.goalsBalance) { return -1; }
   
-    if (a.goalsFavor < b.goalsFavor) { return 1; }
-    if (a.goalsFavor > b.goalsFavor) { return -1; }
+    if (timeA.goalsFavor < timeB.goalsFavor) { return 1; }
+    if (timeA.goalsFavor > timeB.goalsFavor) { return -1; }
   
-    if (a.goalsOwn < b.goalsOwn) { return 1; }
-    if (a.goalsOwn > b.goalsOwn) { return -1; }
+    if (timeA.goalsOwn < timeB.goalsOwn) { return 1; }
+    if (timeA.goalsOwn > timeB.goalsOwn) { return -1; }
   
     return 0;
   };
