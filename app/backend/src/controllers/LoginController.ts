@@ -4,7 +4,7 @@ import Error from '../Middleware/ErrorType';
 import LoginService from '../services/LoginService';
 
 export default class LoginController {
-  loginService = new LoginService();
+  service = new LoginService();
 
   login = async (req: Request, res: Response) => {
     const { email, password } = req.body;
@@ -12,7 +12,7 @@ export default class LoginController {
     if (!email || !password) {
       throw new Error(400, 'All fields must be filled');
     }
-    const token = await this.loginService.login(req.body);
+    const token = await this.service.login(req.body);
 
     if (token === 'null') {
       throw new Error(401, 'Incorrect email or password');

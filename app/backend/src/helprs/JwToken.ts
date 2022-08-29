@@ -25,7 +25,7 @@ export default class JwToken {
     return role;
   }
 
-  jwtValidation = (req: Request) => {
+  static jwtValidation = (req: Request) => {
     const token = req.headers.authorization;
     if (!token) {
       throw new Error(401, 'Token must be a valid token');

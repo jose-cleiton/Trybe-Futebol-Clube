@@ -57,5 +57,19 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "ab6d60f2-1024-4429-bf0d-d6c1e697e824",
+    "colId": "77c70eaa-5f66-4028-960a-70f39168f900",
+    "containerId": "",
+    "name": "leaderboard",
+    "url": "localhost:3001/leaderboard/away",
+    "method": "GET",
+    "sortNum": 50000,
+    "created": "2022-08-29T14:36:33.356Z",
+    "modified": "2022-08-29T15:04:37.103Z",
+    "headers": [],
+    "params": [],
+    "tests": []
   }
 ]
