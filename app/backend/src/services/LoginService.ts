@@ -3,9 +3,9 @@ import Users from '../database/models/users.model';
 import JwToken from '../helprs/JwToken';
 
 export default class loginService implements Login {
-  constructor(private user = Users) {
-    this.user = user;
-  }
+  private user = Users
+ 
+  
 
   login = async (data: LoginData): Promise<strVoid> => {
     const user = await this.user.findOne({ where: { email: data.email } });

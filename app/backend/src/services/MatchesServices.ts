@@ -39,4 +39,6 @@ export default class MatchesService {
   putGoals = async (id: number, data: MatchUpdate) => {
     await this.match.update({ ...data }, { where: { id } });
   };
+
+  
 }

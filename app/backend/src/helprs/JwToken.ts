@@ -27,15 +27,7 @@ export default class JwToken {
 
   static jwtValidation = ( req: Request, _res:Response,next:NextFunction ) => {
     const token = req.headers.authorization;
-    if (!token) {
-      throw new Error(401, 'Token must be a valid token');
-    }
-    if (token) {
-      const payload = JwToken.verify(token);
-      if (!payload || payload === null) {
-        throw new Error(401, 'Token must be a valid token');
-      }
-    }
+    token &&  JwToken.verify(token);
     next()
   };
 }

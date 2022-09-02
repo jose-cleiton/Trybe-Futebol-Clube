@@ -2,7 +2,11 @@ import { Request, Response } from 'express';
 import TeamsService from '../services/LeamsService';
 
 export default class TeamController {
-  service = new TeamsService();
+  service = new TeamsService()
+
+  
+
+
 
   get = async (req: Request, res: Response) => {
     const result = await this.service.get();
