@@ -16,22 +16,6 @@ const token ="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoxLCJ1c2Vyb
 describe('Testantdo login', () => {
   
 
-
-
-  
-  
-  
-  
- 
-   
-  
-
-
-
-
- 
-
-
   it('Verificando login com informações corretas',async () => {
     sinon.stub(users, 'findOne').resolves({
       email: "admin@admin.com",
@@ -52,7 +36,7 @@ describe('Testantdo login', () => {
   });
 
 
-  it('Verificando login com informações corretas',async () => {
+  it('Verificando login com informações incorretas',async () => {
     sinon.stub(users, 'findOne').resolves(undefined)
 
       

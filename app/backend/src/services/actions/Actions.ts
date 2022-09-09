@@ -56,8 +56,8 @@ export default class Actions {
   };
   
    goalAway = (matches: Matches[]) => {
-    const goalsOwn = matches.reduce((acc: number, curr: Matches) => acc + curr.awayTeamGoals, 0);
-    return goalsOwn;
+    const goalsContra = matches.reduce((acc: number, curr: Matches) => acc + curr.awayTeamGoals, 0);
+    return goalsContra;
   };
 
     points = (type: string, matches: MatchReturn[]) => {
@@ -66,21 +66,21 @@ export default class Actions {
     const point = victories * 3 + draws;
     return point;
   };
-   orderTeams = (timeA: Leaderboard, timeB: Leaderboard) => {
-    if (timeA.totalPoints < timeB.totalPoints) { return 1; }
-    if (timeA.totalPoints > timeB.totalPoints) { return -1; }
+   orderTeams = (x: Leaderboard, y: Leaderboard) => {
+    if (x.totalPoints < y.totalPoints) { return 1; }
+    if (x.totalPoints > y.totalPoints) { return -1; }
   
-    if (timeA.totalVictories < timeB.totalVictories) { return 1; }
-    if (timeA.totalVictories > timeB.totalVictories) { return -1; }
+    if (x.totalVictories < y.totalVictories) { return 1; }
+    if (x.totalVictories > y.totalVictories) { return -1; }
   
-    if (timeA.goalsBalance < timeB.goalsBalance) { return 1; }
-    if (timeA.goalsBalance > timeB.goalsBalance) { return -1; }
+    if (x.goalsBalance < y.goalsBalance) { return 1; }
+    if (x.goalsBalance > y.goalsBalance) { return -1; }
   
-    if (timeA.goalsFavor < timeB.goalsFavor) { return 1; }
-    if (timeA.goalsFavor > timeB.goalsFavor) { return -1; }
+    if (x.goalsFavor < y.goalsFavor) { return 1; }
+    if (x.goalsFavor > y.goalsFavor) { return -1; }
   
-    if (timeA.goalsOwn < timeB.goalsOwn) { return 1; }
-    if (timeA.goalsOwn > timeB.goalsOwn) { return -1; }
+    if (x.goalsOwn < y.goalsOwn) { return 1; }
+    if (x.goalsOwn > y.goalsOwn) { return -1; }
   
     return 0;
   };

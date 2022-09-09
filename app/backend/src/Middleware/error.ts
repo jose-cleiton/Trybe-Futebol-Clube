@@ -1,4 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
+
 import Error from './ErrorType';
 
 export default class Errors {
@@ -14,6 +15,13 @@ export default class Errors {
         break;
       default: res.status(status).json({ message });
   };
+
+ 
+
   }
 
 }
+
+
+
+

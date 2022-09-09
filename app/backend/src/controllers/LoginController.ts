@@ -1,22 +1,21 @@
 import { Request, Response } from 'express';
+import Validation from '../validation/Validation';
 import Error from '../Middleware/ErrorType';
 
 import LoginService from '../services/LoginService';
 
 export default class LoginController {
+  validation = new Validation()
   service = new LoginService();
 
   login = async (req: Request, res: Response) => {
     const { email, password } = req.body;
 
-    if (!email || !password) {
-      throw new Error(400, 'All fields must be filled');
-    }
+    this.validation.email_passoword( email, password);
+    
     const token = await this.service.login(req.body);
 
-    if (token === 'null') {
-      throw new Error(401, 'Incorrect email or password');
-    }
+    this.validation.token(token)
     return res.status(200).json({ token });
   };
 

@@ -1,5 +1,8 @@
 import { Leaderboard } from '../interfaces/Leaderboard';
 import { Request, Response } from 'express';
+
+
+
 export default class LeaderboardController {
   constructor(private leaderboardService: Leaderboard) {
     this.leaderboardService = leaderboardService;
