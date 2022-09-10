@@ -10,6 +10,7 @@ const startRepository = new LoginRepository();
 const startService = new loginService(startRepository);
 const startLogin = new LoginController(startService, startValidation);
 
+
 loginRoutes.post('/', startLogin.login);
 loginRoutes.get('/validate', LoginController.loginValidation);
 export default loginRoutes;
