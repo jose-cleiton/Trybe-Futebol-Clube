@@ -1,6 +1,7 @@
+import tipoTeams from '../interfaces/Teams';
 import { strVoid } from '../interfaces/Login';
 import Error from '../Middleware/ErrorType';
-
+import { Response } from 'express';
 
 export default class Validation {
  
@@ -20,5 +21,12 @@ export default class Validation {
 
   }
 
+  getById(res: Response, result : tipoTeams | null){
+
+    if (!result) {
+      return res.status(404).json({ message: 'Team not found' });
+    }
+    return res.status(200).json(result);
+  }
 
 }
