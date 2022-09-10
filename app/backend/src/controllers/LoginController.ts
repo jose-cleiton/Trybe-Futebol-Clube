@@ -6,7 +6,10 @@ import LoginService from '../services/LoginService';
 
 export default class LoginController {
   validation = new Validation()
-  service = new LoginService();
+  
+
+  constructor(private service:LoginService){}
+
 
   login = async (req: Request, res: Response) => {
     const { email, password } = req.body;
@@ -15,7 +18,7 @@ export default class LoginController {
     
     const token = await this.service.login(req.body);
 
-    this.validation.token(token)
+  
     return res.status(200).json({ token });
   };
 

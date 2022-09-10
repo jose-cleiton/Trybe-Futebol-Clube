@@ -13,7 +13,7 @@ export default class TeamController {
 
   getById = async (req: Request, res: Response) => {
     const result = await this.service.getById(Number(req.params.id));
-    this.validation.getById(res, result);
+    Validation.getById(res, result);
     
   };
 }

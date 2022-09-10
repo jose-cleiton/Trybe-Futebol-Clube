@@ -21,7 +21,7 @@ export default class Validation {
 
   }
 
-  getById(res: Response, result : tipoTeams | null){
+  static getById(res: Response, result : tipoTeams | null){
 
     if (!result) {
       return res.status(404).json({ message: 'Team not found' });

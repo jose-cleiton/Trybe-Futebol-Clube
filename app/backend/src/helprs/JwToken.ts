@@ -1,8 +1,7 @@
-import * as jwt from 'jsonwebtoken';
 import * as dotenv from 'dotenv';
-import { Request , Response, NextFunction} from 'express';
+import { NextFunction, Request, Response } from 'express';
+import * as jwt from 'jsonwebtoken';
 import User from '../interfaces/User';
-import Error from '../Middleware/ErrorType';
 
 dotenv.config();
 
