@@ -1,4 +1,3 @@
-
 import Actions from './actions/Actions';
 import Leaderboard from '../interfaces/Leaderboard';
 import { MatchTeams } from '../interfaces/Matches';
@@ -6,7 +5,7 @@ import Matches from '../database/models/match.model';
 import Team from '../database/models/team.model';
 
 export default class LeaderboardService {
-  actions = new Actions()
+  actions = new Actions();
   constructor(private board = Team) {
     this.board = board;
   }

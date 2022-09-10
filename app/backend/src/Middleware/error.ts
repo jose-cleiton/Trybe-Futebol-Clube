@@ -14,14 +14,6 @@ export default class Errors {
         res.status(404).json({ message: 'There is no team with such id!' });
         break;
       default: res.status(status).json({ message });
+    }
   };
-
- 
-
-  }
-
 }
-
-
-
-

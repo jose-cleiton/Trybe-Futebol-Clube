@@ -24,9 +24,9 @@ export default class JwToken {
     return role;
   }
 
-  static jwtValidation = ( req: Request, _res:Response,next:NextFunction ) => {
+  static jwtValidation = (req: Request, _res:Response, next:NextFunction) => {
     const token = req.headers.authorization;
-    token &&  JwToken.verify(token);
-    next()
+    if (token) return JwToken.verify(token);
+    next();
   };
 }

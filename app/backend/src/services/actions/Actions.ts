@@ -1,19 +1,17 @@
 import Matches, { MatchReturn, MatchTeams } from '../../interfaces/Matches';
 import Leaderboard from '../../interfaces/Leaderboard';
 
-
 export default class Actions {
-
   victory = (type: string, matches: Matches[]) => {
     let victories = 0;
-  
+
     if (type === 'teamHome') {
       victories = matches.reduce((acc: number, curr: Matches) => {
         if (curr.homeTeamGoals > curr.awayTeamGoals) return acc + 1;
         return acc;
       }, 0);
     }
-  
+
     if (type === 'teamAway') {
       victories = matches.reduce((acc: number, curr: Matches) => {
         if (curr.homeTeamGoals < curr.awayTeamGoals) return acc + 1;
@@ -23,7 +21,7 @@ export default class Actions {
     return victories;
   };
 
-   draw = (matches: Matches[]) => {
+  draw = (matches: Matches[]) => {
     const draws = matches.reduce((acc: number, curr: Matches) => {
       if (curr.homeTeamGoals === curr.awayTeamGoals) return acc + 1;
       return acc;
@@ -31,16 +29,16 @@ export default class Actions {
     return draws;
   };
 
-   defeat = (type: string, matches: Matches[]) => {
+  defeat = (type: string, matches: Matches[]) => {
     let losses = 0;
-  
+
     if (type === 'teamHome') {
       losses = matches.reduce((acc: number, curr: Matches) => {
         if (curr.homeTeamGoals < curr.awayTeamGoals) return acc + 1;
         return acc;
       }, 0);
     }
-  
+
     if (type === 'teamAway') {
       losses = matches.reduce((acc: number, curr: Matches) => {
         if (curr.homeTeamGoals > curr.awayTeamGoals) return acc + 1;
@@ -50,38 +48,39 @@ export default class Actions {
     return losses;
   };
 
-   goalHome = (matches: Matches[]) => {
+  goalHome = (matches: Matches[]) => {
     const goalsFavor = matches.reduce((acc: number, curr: Matches) => acc + curr.homeTeamGoals, 0);
     return goalsFavor;
   };
-  
-   goalAway = (matches: Matches[]) => {
+
+  goalAway = (matches: Matches[]) => {
     const goalsContra = matches.reduce((acc: number, curr: Matches) => acc + curr.awayTeamGoals, 0);
     return goalsContra;
   };
 
-    points = (type: string, matches: MatchReturn[]) => {
+  points = (type: string, matches: MatchReturn[]) => {
     const victories = this.victory(type, matches);
     const draws = this.draw(matches);
     const point = victories * 3 + draws;
     return point;
   };
-   orderTeams = (x: Leaderboard, y: Leaderboard) => {
+
+  orderTeams = (x: Leaderboard, y: Leaderboard) => {
     if (x.totalPoints < y.totalPoints) { return 1; }
     if (x.totalPoints > y.totalPoints) { return -1; }
-  
+
     if (x.totalVictories < y.totalVictories) { return 1; }
     if (x.totalVictories > y.totalVictories) { return -1; }
-  
+
     if (x.goalsBalance < y.goalsBalance) { return 1; }
     if (x.goalsBalance > y.goalsBalance) { return -1; }
-  
+
     if (x.goalsFavor < y.goalsFavor) { return 1; }
     if (x.goalsFavor > y.goalsFavor) { return -1; }
-  
+
     if (x.goalsOwn < y.goalsOwn) { return 1; }
     if (x.goalsOwn > y.goalsOwn) { return -1; }
-  
+
     return 0;
   };
 
@@ -89,15 +88,15 @@ export default class Actions {
     name: teamName,
     totalPoints: this.points('teamHome', teamHome),
     totalGames: teamHome.length,
-    totalVictories:  this.victory('teamHome', teamHome),
-    totalDraws:  this.draw(teamHome),
-    totalLosses: this. defeat('teamHome', teamHome),
-    goalsFavor:  this.goalHome(teamHome),
-    goalsOwn:  this.goalAway(teamHome),
-    goalsBalance:  this.goalHome(teamHome) - this.goalAway(teamHome),
-    efficiency: Number((( this.points('teamHome', teamHome) / (teamHome.length * 3)) * 100).toFixed(2)),
+    totalVictories: this.victory('teamHome', teamHome),
+    totalDraws: this.draw(teamHome),
+    totalLosses: this.defeat('teamHome', teamHome),
+    goalsFavor: this.goalHome(teamHome),
+    goalsOwn: this.goalAway(teamHome),
+    goalsBalance: this.goalHome(teamHome) - this.goalAway(teamHome),
+    efficiency: Number(((this.points('teamHome', teamHome) / (teamHome.length * 3)) * 100).toFixed(2)),
   });
-  
+
   leaderboardAway = ({ teamName, teamAway }: MatchTeams) => ({
     name: teamName,
     totalPoints: this.points('teamAway', teamAway),
@@ -130,5 +129,4 @@ export default class Actions {
     goalsBalance: this.goalAway(teamAway) - this.goalHome(teamAway) + this.goalHome(teamHome) - this.goalAway(teamHome),
     efficiency: this.efficiency(teamHome, teamAway),
   });
-
 }

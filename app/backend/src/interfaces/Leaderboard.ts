@@ -10,7 +10,7 @@ export default interface iLeaderboard {
   goalsBalance: number;
   efficiency: number;
 }
-export type arriLead = Array<iLeaderboard> | void
+export type arriLead = Array<iLeaderboard> | void;
 
 export interface Leaderboard {
   finishMatch(type: string): Promise<arriLead>
