@@ -5,18 +5,17 @@ import Error from '../Middleware/ErrorType';
 import LoginService from '../services/LoginService';
 
 export default class LoginController {
-  constructor(
-    private service:LoginService,
-    private validation : Validation,
-  ) {}
+  validation = new Validation()
+  service = new LoginService();
 
   login = async (req: Request, res: Response) => {
     const { email, password } = req.body;
 
-    this.validation.email_passoword(email, password);
-
+    this.validation.email_passoword( email, password);
+    
     const token = await this.service.login(req.body);
 
+    this.validation.token(token)
     return res.status(200).json({ token });
   };
 

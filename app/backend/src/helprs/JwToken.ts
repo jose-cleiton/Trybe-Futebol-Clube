@@ -1,7 +1,8 @@
-import * as dotenv from 'dotenv';
-import { NextFunction, Request, Response } from 'express';
 import * as jwt from 'jsonwebtoken';
+import * as dotenv from 'dotenv';
+import { Request , Response, NextFunction} from 'express';
 import User from '../interfaces/User';
+import Error from '../Middleware/ErrorType';
 
 dotenv.config();
 
@@ -24,9 +25,9 @@ export default class JwToken {
     return role;
   }
 
-  static jwtValidation = (req: Request, _res:Response, next:NextFunction) => {
+  static jwtValidation = ( req: Request, _res:Response,next:NextFunction ) => {
     const token = req.headers.authorization;
-    if (token) return JwToken.verify(token);
-    next();
+    token &&  JwToken.verify(token);
+    next()
   };
 }
