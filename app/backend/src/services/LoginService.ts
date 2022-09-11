@@ -1,19 +1,31 @@
-import Login, { LoginData, strVoid } from '../interfaces/Login';
-import Users from '../database/models/users.model';
+import ErrorType from '../Middleware/ErrorType';
 import JwToken from '../helprs/JwToken';
+import { LoginData, strVoid } from '../interfaces/Login';
+import { ILoginRepository } from '../repositories/ILoginRepository';
 
-export default class loginService implements Login {
-  private user = Users
- 
+export default class LoginService  {
   
+ 
+  constructor(private repository: ILoginRepository){}
 
   login = async (data: LoginData): Promise<strVoid> => {
-    const user = await this.user.findOne({ where: { email: data.email } });
-    if (!user) {
-      return 'null';
-    }
+
+    const user = await this.repository.getUserByEmail(data.email);
+    
+    if(!user) throw new ErrorType(401, 'Incorrect email or password')
+
     const token = JwToken.create(user);
+
     return token;
+
+
+
+    // const user = await this.user.findOne({ where: { email: data.email } });
+    // if (!user) {
+    //   return 'null';
+    // }
+    // const token = JwToken.create(user);
+    // return token;
   };
 
   static validate(token: string) {
