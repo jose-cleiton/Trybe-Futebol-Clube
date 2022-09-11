@@ -17,12 +17,7 @@ export default class Validation {
     }
   }
 
-  static getById(res: Response, result : tipoTeams | null) {
-    if (!result) {
-      return res.status(404).json({ message: 'Team not found' });
-    }
-    return res.status(200).json(result);
-  }
+
   static async loginValidation(req: Request, res: Response) {
     const token = req.headers.authorization;
 
