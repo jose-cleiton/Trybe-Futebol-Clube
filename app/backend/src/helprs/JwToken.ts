@@ -1,8 +1,7 @@
-import * as jwt from 'jsonwebtoken';
 import * as dotenv from 'dotenv';
-import { Request , Response, NextFunction} from 'express';
+import { NextFunction, Request, Response } from 'express';
+import * as jwt from 'jsonwebtoken';
 import User from '../interfaces/User';
-import Error from '../Middleware/ErrorType';
 
 dotenv.config();
 
@@ -30,4 +29,10 @@ export default class JwToken {
     token &&  JwToken.verify(token);
     next()
   };
+
+  static validate(token: string) {
+    const payload = JwToken.verify(token);
+    if (!payload) return 'null';
+    return payload;
+  }
 }

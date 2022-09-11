@@ -1,7 +1,8 @@
 import { Request, Response } from 'express';
-import Validation from '../validation/Validation';
 import Error from '../Middleware/ErrorType';
+import Validation from '../validation/Validation';
 
+import JwToken from '../helprs/JwToken';
 import LoginService from '../services/LoginService';
 
 export default class LoginController {
@@ -28,7 +29,7 @@ export default class LoginController {
     if (!token) {
       throw new Error(401, 'Token invalid');
     }
-    const role = LoginService.validate(token);
+    const role = JwToken.validate(token);
     return res.status(200).json({ role });
   }
 }
