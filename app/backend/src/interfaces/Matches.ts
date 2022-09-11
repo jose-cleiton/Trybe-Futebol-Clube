@@ -1,12 +1,13 @@
-export default interface Matches {
-  id?: number;
+export default interface IMatchesComNome extends MatchReturn {
+  teamHome: { teamName: string };
+  teamAway: { teamName: string };
+}
+
+export interface IMatchesDTO {
   homeTeam: number;
   homeTeamGoals: number;
   awayTeam: number;
   awayTeamGoals: number;
-  inProgress?: boolean;
-  teamHome?: { teamName: string };
-  teamAway?: { teamName: string };
 }
 
 export interface MatchUpdate {
@@ -14,17 +15,10 @@ export interface MatchUpdate {
   awayTeamGoals?: number;
 }
 export interface MatchReturn {
-  id?: number;
+  id: number;
   homeTeam: number;
   homeTeamGoals: number;
   awayTeam: number;
   awayTeamGoals: number;
-  inProgress?: boolean;
-}
-
-export interface MatchTeams{
-  id?: number;
-  teamName: string;
-  teamHome: MatchReturn[];
-  teamAway: MatchReturn[];
+  inProgress: boolean;
 }

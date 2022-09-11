@@ -1,14 +1,9 @@
 import { Router } from 'express';
-import TeamRepository from '../repositories/implementations/TeamRepository';
-import TeamController from '../controllers/TeamsController';
-import TeamsService from '../services/TeamsService';
+import startController from '../factories';
 
 const teamsRoutes = Router();
 
-const startrepository = new TeamRepository()
-const startTeamService = new TeamsService(startrepository)
-const startController = new TeamController(startTeamService)
 teamsRoutes.get('/:id', startController.getById);
-teamsRoutes.get('/', startController.get);
+teamsRoutes.get('/', startController.getAll);
 
 export default teamsRoutes;

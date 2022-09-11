@@ -1,9 +1,9 @@
-export default interface tipoTeams {
+export default interface ITeams {
   id: number,
   teamName: string,
 }
 
 export interface Teams {
-  listAll(): Promise<Array<tipoTeams>>;
-  findById(id:number): Promise<tipoTeams | null>
+  listAll(): Promise<Array<ITeams>>;
+  findById(id:number): Promise<ITeams | null>
 }

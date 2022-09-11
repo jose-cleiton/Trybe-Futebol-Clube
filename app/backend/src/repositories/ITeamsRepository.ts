@@ -1,8 +1,7 @@
-import Teams from "../database/models/team.model";
-
+import Teams from '../database/models/team.model';
 
 export interface ITeamsRepository {
 
-  get(): Promise<Array<Teams | null>>;
+  getAll(): Promise<Teams[] | []>;
   getById(id:number): Promise<Teams | null>
 }

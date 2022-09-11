@@ -63,11 +63,11 @@
     "colId": "77c70eaa-5f66-4028-960a-70f39168f900",
     "containerId": "",
     "name": "leaderboard",
-    "url": "localhost:3001/leaderboard/away",
+    "url": "localhost:3001/leaderboard/home",
     "method": "GET",
     "sortNum": 50000,
     "created": "2022-08-29T14:36:33.356Z",
-    "modified": "2022-08-29T15:04:37.103Z",
+    "modified": "2022-09-11T19:49:07.001Z",
     "headers": [],
     "params": [],
     "tests": []

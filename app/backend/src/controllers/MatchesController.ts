@@ -1,24 +1,18 @@
 import { Request, Response } from 'express';
 
 import MatchesService from '../services/MatchesServices';
-import Error from '../Middleware/ErrorType';
 
 export default class MatchesController {
-  service = new MatchesService();
+  constructor(private service : MatchesService) {}
 
   get = async (_req: Request, res: Response) => {
-    const result = await this.service.get();
+    const result = await this.service.getAllIncludeTeamName();
     return res.status(200).json(result);
   };
 
   post = async (req: Request, res: Response) => {
-    const newResult = await this.service.post(req.body);
-    if (!newResult) {
-      throw new Error(404, 'There is no team with such id!');
-    }
-    if (newResult === 'sameteam') {
-      throw new Error(401, 'It is not possible to create a match with two equal teams');
-    }
+    const newResult = await this.service.saveNewMatch(req.body);
+
     return res.status(201).json(newResult);
   };
 

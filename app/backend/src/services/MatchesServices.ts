@@ -1,42 +1,29 @@
-import Team from '../database/models/team.model';
-import Match from '../database/models/match.model';
-import Matches, { MatchUpdate } from '../interfaces/Matches';
+import ErrorType from '../Middleware/ErrorType';
+import { IMatchesDTO, MatchUpdate } from '../interfaces/Matches';
+import { IMatchesRepository } from '../repositories/IMatchesRepository';
 
 export default class MatchesService {
-  constructor(private match = Match) {
-    this.match = match;
-  }
+  constructor(private match : IMatchesRepository) {}
 
-  get = async (): Promise<Array<Matches>> => {
-    const obj = {
-      include: [
-        { model: Team, as: 'teamHome', attributes: ['teamName'] },
-        { model: Team, as: 'teamAway', attributes: ['teamName'] },
-      ],
-    };
-    const result = this.match.findAll(obj);
-    return result as unknown as Matches[];
+  getAllIncludeTeamName = async () => {
+    const result = await this.match.getAllIncludeTeamName();
+    return result;
   };
 
-  post = async (data: Matches) => {
-    const homeTeam = await this.match.findOne({ where: { id: data.homeTeam } });
-    const awayTeam = await this.match.findOne({ where: { id: data.awayTeam } });
-
-    if (data.homeTeam === data.awayTeam) return 'sameteam';
-
-    if (!homeTeam || !awayTeam) {
-      return null;
+  saveNewMatch = async (data: IMatchesDTO) => {
+    if (data.homeTeam === data.awayTeam) {
+      throw new ErrorType(401, 'It is not possible to create a match with two equal teams');
     }
-
-    const nerResult = await this.match.create({ ...data, inProgress: true });
-    return nerResult;
+    return this.match.saveNewMatch(data);
   };
 
   putProgress = async (id: number) => {
-    await this.match.update({ inProgress: false }, { where: { id } });
+    const result = await this.match.putProgress(id);
+    return result;
   };
 
   putGoals = async (id: number, data: MatchUpdate) => {
-    await this.match.update({ ...data }, { where: { id } });
+    const result = this.match.putGoals(id, data);
+    return result;
   };
 }

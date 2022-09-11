@@ -9,6 +9,6 @@ const controllers = new LeaderboardController(service);
 
 leaderboardRoutes.get('/home', controllers.matchHome);
 leaderboardRoutes.get('/away', controllers.matchAway);
-leaderboardRoutes.get('/', controllers.matchAll);
+// leaderboardRoutes.get('/', controllers.matchAll);
 
 export default leaderboardRoutes;

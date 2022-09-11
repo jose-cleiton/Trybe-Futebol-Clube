@@ -1,19 +1,16 @@
+import ErrorType from '../Middleware/ErrorType';
 import { ITeamsRepository } from '../repositories/ITeamsRepository';
-import tipoTeams from '../interfaces/Teams';
 
 export default class TeamsService {
   constructor(private team : ITeamsRepository) {
-    
+
   }
-  get = async ()=>{
-    const teams = await this.team.get();
+
+  getAll = async () => this.team.getAll();
+
+  getById = async (id: number) => {
+    const teams = await this.team.getById(id);
+    if (!teams) throw new ErrorType(404, 'Team not found');
     return teams;
-  }
-
-  getById = async (id: number) =>{
-    const team = await this.team.getById(id);
-    return team;
-  }
-
+  };
 }
-

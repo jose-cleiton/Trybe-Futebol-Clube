@@ -1,5 +1,5 @@
 import {Request ,Response } from 'express';
-import tipoTeams from '../interfaces/Teams';
+import ITeams from '../interfaces/Teams';
 import { strVoid } from '../interfaces/Login';
 import Error from '../Middleware/ErrorType';
 import JwToken from '../helprs/JwToken';
