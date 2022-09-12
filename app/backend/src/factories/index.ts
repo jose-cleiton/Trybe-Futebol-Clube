@@ -1,5 +1,5 @@
-import LoginFactory from './LoginFactory';
+import TeamFactory from './TeamFactory';
 
-const startController = LoginFactory.make();
+const startController = TeamFactory.make();
 
 export default startController;
