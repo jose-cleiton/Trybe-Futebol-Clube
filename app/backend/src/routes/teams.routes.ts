@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import startTeamFactory from '../factories';
+import { startTeamFactory } from '../factories';
 
 const teamsRoutes = Router();
 
