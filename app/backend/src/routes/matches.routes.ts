@@ -1,18 +1,13 @@
 import { Router } from 'express';
-import MatchesController from '../controllers/MatchesController';
+import { startMatchsFactory } from '../factories';
+
 import JwToken from '../helprs/JwToken';
-import MatchesRepository from '../repositories/implementations/MatchesRepository';
-import MatchesService from '../services/MatchesServices';
 
 const matchesRoutes = Router();
 
-const startRepository = new MatchesRepository();
-const startService = new MatchesService(startRepository);
-const startController = new MatchesController(startService);
-
-matchesRoutes.get('/', startController.get);
-matchesRoutes.post('/', JwToken.jwtValidation, startController.post);
-matchesRoutes.patch('/:id/finish', startController.putProgress);
-matchesRoutes.patch('/:id', startController.putGoals);
+matchesRoutes.get('/', startMatchsFactory.get);
+matchesRoutes.post('/', JwToken.jwtValidation, startMatchsFactory.post);
+matchesRoutes.patch('/:id/finish', startMatchsFactory.putProgress);
+matchesRoutes.patch('/:id', startMatchsFactory.putGoals);
 
 export default matchesRoutes;
