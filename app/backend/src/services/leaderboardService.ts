@@ -1,47 +1,43 @@
 import Actions from './actions/Actions';
+import ILeaderboard from '../interfaces/Leaderboard';
 
 import Matches from '../database/models/match.model';
-import Teams from '../database/models/team.model';
-import ILeaderboard, {
-  ITeamsWithMachesAll,
-  ITeamsWithMachesAway,
-  ITeamsWithMachesHome } from '../interfaces/Leaderboard';
+import Team from '../database/models/team.model';
+import { MatchTeams } from '../interfaces/Matches';
 
 export default class LeaderboardService {
   actions = new Actions();
-  teams = Teams;
+  constructor(private board = Team) {
+    this.board = board;
+  }
 
   async finishMatch(type: string): Promise<ILeaderboard[]> {
     let leaderBoard: ILeaderboard[] = [];
-    const teamsWithMaches = await this.teams.findAll({
+    const matches = await this.board.findAll({
       include: [
         { model: Matches, as: `${type}`, where: { inProgress: 0 } },
       ],
     });
+    const finish = matches as unknown as MatchTeams[];
 
-    if (type === 'teamHome') {
-      const home = teamsWithMaches as unknown as ITeamsWithMachesHome[];
-      leaderBoard = home.map(this.actions.leaderboardHome);
-    }
+    if (type === 'teamHome') leaderBoard = finish.map(this.actions.leaderboardHome);
 
-    if (type === 'teamAway') {
-      const away = teamsWithMaches as unknown as ITeamsWithMachesAway[];
-      leaderBoard = away.map(this.actions.leaderboardAway);
-    }
+    if (type === 'teamAway') leaderBoard = finish.map(this.actions.leaderboardAway);
 
     const orderLeaderBoard = leaderBoard.sort(this.actions.orderTeams);
     return orderLeaderBoard;
   }
 
   async finishAllMatches(): Promise<ILeaderboard[]> {
-    const teamsWithMaches = await this.teams.findAll({
+    const matches = await this.board.findAll({
       include: [
         { model: Matches, as: 'teamHome', where: { inProgress: 0 } },
         { model: Matches, as: 'teamAway', where: { inProgress: 0 } },
       ],
-    }) as ITeamsWithMachesAll[];
+    });
+    const finish = matches as unknown as MatchTeams[];
 
-    const leaderBoard = teamsWithMaches.map(this.actions.leaderboardAll);
+    const leaderBoard = finish.map(this.actions.leaderboardAll);
 
     const orderLeaderBoard = leaderBoard.sort(this.actions.orderTeams);
     return orderLeaderBoard;

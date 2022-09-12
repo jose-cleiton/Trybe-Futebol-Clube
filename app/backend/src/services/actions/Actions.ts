@@ -1,9 +1,5 @@
-import ILeaderboard, {
-  ITeamsWithMachesAll,
-  ITeamsWithMachesAway,
-  ITeamsWithMachesHome,
-} from '../../interfaces/Leaderboard';
-import { MatchReturn } from '../../interfaces/Matches';
+import ILeaderboard from '../../interfaces/Leaderboard';
+import { MatchReturn, MatchTeams } from '../../interfaces/Matches';
 
 export default class Actions {
   victory = (type: string, matches: MatchReturn[]) => {
@@ -90,7 +86,7 @@ export default class Actions {
     return 0;
   };
 
-  leaderboardHome = (data: ITeamsWithMachesHome) => ({
+  leaderboardHome = (data: MatchTeams) => ({
     name: data.teamName,
     totalPoints: this.points('teamHome', data.teamHome),
     totalGames: data.teamHome.length,
@@ -104,7 +100,7 @@ export default class Actions {
       .points('teamHome', data.teamHome) / (data.teamHome.length * 3)) * 100).toFixed(2)),
   });
 
-  leaderboardAway = ({ teamName, teamAway }: ITeamsWithMachesAway) => ({
+  leaderboardAway = ({ teamName, teamAway }: MatchTeams) => ({
     name: teamName,
     totalPoints: this.points('teamAway', teamAway),
     totalGames: teamAway.length,
@@ -125,7 +121,7 @@ export default class Actions {
     return eff;
   };
 
-  leaderboardAll = ({ teamName, teamHome, teamAway }: ITeamsWithMachesAll) => ({
+  leaderboardAll = ({ teamName, teamHome, teamAway }: MatchTeams) => ({
     name: teamName,
     totalPoints: this.points('teamAway', teamAway) + this.points('teamHome', teamHome),
     totalGames: teamAway.length + teamHome.length,

@@ -16,8 +16,8 @@ export default class LeaderboardController {
     return res.status(200).json(leaderboard);
   };
 
-//   matchAll = async (_req: Request, res: Response) => {
-//     const leaderboard = await this.leaderboardService.finishAllMatches();
-//     return res.status(200).json(leaderboard);
-//   };
+  matchAll = async (_req: Request, res: Response) => {
+    const leaderboard = await this.leaderboardService.finishAllMatches();
+    return res.status(200).json(leaderboard);
+  };
 }

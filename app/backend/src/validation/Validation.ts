@@ -1,22 +1,20 @@
-import {Request ,Response } from 'express';
-import ITeams from '../interfaces/Teams';
+import { Request, Response } from 'express';
+import JwToken from '../helprs/JwToken';
 import { strVoid } from '../interfaces/Login';
 import Error from '../Middleware/ErrorType';
-import JwToken from '../helprs/JwToken';
 
 export default class Validation {
-  static email_passoword(email: string, password: string) {
+  static emailPassoword(email: string, password: string) {
     if (!email || !password) {
       throw new Error(400, 'All fields must be filled');
     }
   }
 
-  token(token:strVoid) {
+  token = (token:strVoid) => {
     if (token === 'null') {
       throw new Error(401, 'Incorrect email or password');
     }
-  }
-
+  };
 
   static async loginValidation(req: Request, res: Response) {
     const token = req.headers.authorization;
@@ -27,5 +25,4 @@ export default class Validation {
     const role = JwToken.validate(token);
     return res.status(200).json({ role });
   }
-
 }

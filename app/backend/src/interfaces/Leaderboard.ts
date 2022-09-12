@@ -17,14 +17,15 @@ export type arriLead = Array<ILeaderboard> | void;
 
 export interface Leaderboard {
   finishMatch(type: string): Promise<arriLead>
-  // finishAllMatches(): Promise<arriLead>
+  finishAllMatches(): Promise<arriLead>
 
 }
 
-export interface ITeamsWithMachesHome {
-  id:number;
-  teamName:string;
+export interface ITeamsWithMaches {
+  id?: number;
+  teamName: string;
   teamHome: MatchReturn[];
+  teamAway: MatchReturn[];
 
 }
 export interface ITeamsWithMachesAway extends Teams{

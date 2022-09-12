@@ -9,7 +9,7 @@ export default class LoginController {
   login = async (req: Request, res: Response) => {
     const { email, password } = req.body;
 
-    Validation.email_passoword(email, password);
+    Validation.emailPassoword(email, password);
 
     const token = await this.service.login(req.body);
 

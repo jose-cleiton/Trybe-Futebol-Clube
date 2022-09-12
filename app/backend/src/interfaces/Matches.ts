@@ -15,10 +15,17 @@ export interface MatchUpdate {
   awayTeamGoals?: number;
 }
 export interface MatchReturn {
-  id: number;
+  id?: number;
   homeTeam: number;
   homeTeamGoals: number;
   awayTeam: number;
   awayTeamGoals: number;
-  inProgress: boolean;
+  inProgress?: boolean;
+}
+
+export interface MatchTeams{
+  id?: number;
+  teamName: string;
+  teamHome: MatchReturn[];
+  teamAway: MatchReturn[];
 }
