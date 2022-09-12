@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "../../../.."
+		},
+		{
+			"path": "../.."
+		}
+	],
+	"settings": {
+		"DockerRun.DisableAutoGenerateConfig": true
+	}
+}

@@ -1,9 +1,9 @@
 import { Router } from 'express';
-import startController from '../factories';
+import startTeamFactory from '../factories';
 
 const teamsRoutes = Router();
 
-teamsRoutes.get('/:id', startController.getById);
-teamsRoutes.get('/', startController.getAll);
+teamsRoutes.get('/:id', startTeamFactory.getById);
+teamsRoutes.get('/', startTeamFactory.getAll);
 
 export default teamsRoutes;

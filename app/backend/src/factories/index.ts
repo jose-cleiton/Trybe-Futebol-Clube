@@ -1,5 +1,5 @@
 import TeamFactory from './TeamFactory';
 
-const startController = TeamFactory.make();
+const startTeamFactory = TeamFactory.make();
 
-export default startController;
+export default startTeamFactory;

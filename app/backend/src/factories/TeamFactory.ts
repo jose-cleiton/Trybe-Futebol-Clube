@@ -2,7 +2,7 @@ import TeamController from '../controllers/TeamsController';
 import TeamRepository from '../repositories/implementations/TeamRepository';
 import TeamsService from '../services/TeamsService';
 
-export default class LoginFactory {
+export default class TeamFactory {
   static make = () => {
     const startrepository = new TeamRepository();
     const startTeamService = new TeamsService(startrepository);
