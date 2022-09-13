@@ -1,10 +1,8 @@
 import { Request, Response } from 'express';
-import { Leaderboard } from '../interfaces/Leaderboard';
+import LeaderboardService from '../services/leaderboardService';
 
 export default class LeaderboardController {
-  constructor(private leaderboardService: Leaderboard) {
-    this.leaderboardService = leaderboardService;
-  }
+  constructor(private leaderboardService: LeaderboardService) { }
 
   matchHome = async (_req: Request, res: Response) => {
     const leaderboard = await this.leaderboardService.finishMatch('teamHome');

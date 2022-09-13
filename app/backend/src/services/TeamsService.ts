@@ -2,9 +2,7 @@ import ErrorType from '../Middleware/ErrorType';
 import { ITeamsRepository } from '../repositories/ITeamsRepository';
 
 export default class TeamsService {
-  constructor(private team : ITeamsRepository) {
-
-  }
+  constructor(private team : ITeamsRepository) { }
 
   getAll = async () => this.team.getAll();
 
