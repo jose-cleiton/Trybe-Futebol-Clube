@@ -1,10 +1,10 @@
-import 'express-async-errors';
 import * as express from 'express';
+import 'express-async-errors';
 import Errors from './Middleware/error';
-import loginRoutes from './routes/login.routes';
-import teamsRoutes from './routes/teams.routes';
-import matchesRoutes from './routes/matches.routes';
-import leaderboardRoutes from './routes/leardBoard.routes';
+import LeaderboardRoutes from './routes/leardBoard.routes';
+import LoginRoutes from './routes/login.routes';
+import MatchesRoutes from './routes/matches.routes';
+import TeamRoutes from './routes/teams.routes';
 
 class App {
   public app: express.Express;
@@ -28,10 +28,10 @@ class App {
 
     this.app.use(express.json());
     this.app.use(accessControl);
-    this.app.use('/login', loginRoutes);
-    this.app.use('/teams', teamsRoutes);
-    this.app.use('/matches', matchesRoutes);
-    this.app.use('/leaderboard/', leaderboardRoutes);
+    this.app.use('/login', new LoginRoutes().router);
+    this.app.use('/teams', new TeamRoutes().router);
+    this.app.use('/matches', new MatchesRoutes().router);
+    this.app.use('/leaderboard/', new LeaderboardRoutes().router);
     this.app.use(Errors._error);
   }
 

@@ -3,11 +3,18 @@ import { startMatchsFactory } from '../factories';
 
 import JwToken from '../helprs/JwToken';
 
-const matchesRoutes = Router();
+export default class MatchesRoutes {
+  router;
 
-matchesRoutes.get('/', startMatchsFactory.get);
-matchesRoutes.post('/', JwToken.jwtValidation, startMatchsFactory.post);
-matchesRoutes.patch('/:id/finish', startMatchsFactory.putProgress);
-matchesRoutes.patch('/:id', startMatchsFactory.putGoals);
+  constructor() {
+    this.router = Router();
+    this.initializeRoutes();
+  }
 
-export default matchesRoutes;
+  initializeRoutes() {
+    this.router.get('/', startMatchsFactory.get);
+    this.router.post('/', JwToken.jwtValidation, startMatchsFactory.post);
+    this.router.patch('/:id/finish', startMatchsFactory.putProgress);
+    this.router.patch('/:id', startMatchsFactory.putGoals);
+  }
+}

@@ -2,8 +2,17 @@ import { Router } from 'express';
 import { startLoginFactory } from '../factories';
 import Validation from '../validation/Validation';
 
-const loginRoutes = Router();
+class LoginRoutes {
+  router;
+  constructor() {
+    this.router = Router();
+    this.initializeRoutes();
+  }
 
-loginRoutes.post('/', startLoginFactory.login);
-loginRoutes.get('/validate', Validation.loginValidation);
-export default loginRoutes;
+  initializeRoutes() {
+    this.router.post('/', startLoginFactory.login);
+    this.router.get('/validate', Validation.loginValidation);
+  }
+}
+
+export default LoginRoutes;

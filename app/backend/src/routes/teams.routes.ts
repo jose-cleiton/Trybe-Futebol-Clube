@@ -1,9 +1,15 @@
 import { Router } from 'express';
 import { startTeamFactory } from '../factories';
 
-const teamsRoutes = Router();
+export default class TeamRoutes {
+  router;
+  constructor() {
+    this.router = Router();
+    this.initializeRoutes();
+  }
 
-teamsRoutes.get('/:id', startTeamFactory.getById);
-teamsRoutes.get('/', startTeamFactory.getAll);
-
-export default teamsRoutes;
+  initializeRoutes() {
+    this.router.get('/:id', startTeamFactory.getById);
+    this.router.get('/', startTeamFactory.getAll);
+  }
+}
