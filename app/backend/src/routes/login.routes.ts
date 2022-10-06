@@ -2,7 +2,7 @@ import { Router } from 'express';
 import { startLoginFactory } from '../factories';
 import Validation from '../validation/Validation';
 
-class LoginRoutes {
+export default class LoginRoutes {
   router;
   constructor() {
     this.router = Router();
@@ -14,5 +14,3 @@ class LoginRoutes {
     this.router.get('/validate', Validation.loginValidation);
   }
 }
-
-export default LoginRoutes;

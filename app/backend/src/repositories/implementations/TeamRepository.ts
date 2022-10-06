@@ -4,13 +4,11 @@ import { ITeamsRepository } from '../ITeamsRepository';
 export default class TeamRepository implements ITeamsRepository {
   teams = Teams;
 
-  async getAll() :Promise<Teams[] | []> {
-    const teams = await this.teams.findAll({ raw: true });
-    return teams;
-  }
+  getAll = async () :Promise<Teams[] | []> => this
+    .teams
+    .findAll({ raw: true });
 
-  async getById(id: number): Promise<Teams | null> {
-    const team = await this.teams.findOne({ where: { id } });
-    return team;
-  }
+  getById = async (id: number): Promise<Teams | null> => this
+    .teams
+    .findOne({ where: { id } });
 }

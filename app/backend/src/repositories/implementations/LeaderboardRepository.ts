@@ -9,7 +9,7 @@ export default class LeaderboardRepository implements ILeaderboardRepository {
   actions = new Actions();
   constructor(private board = Team) { }
 
-  async finishMatch(type: string): Promise<ILeaderboard[]> {
+  finishMatch = async (type: string): Promise<ILeaderboard[]> => {
     let leaderBoard: ILeaderboard[] = [];
     const matches = await this.board.findAll({
       include: [
@@ -24,9 +24,9 @@ export default class LeaderboardRepository implements ILeaderboardRepository {
 
     const orderLeaderBoard = leaderBoard.sort(this.actions.orderTeams);
     return orderLeaderBoard;
-  }
+  };
 
-  async finishAllMatches(): Promise<ILeaderboard[]> {
+  finishAllMatches = async (): Promise<ILeaderboard[]> => {
     const matches = await this.board.findAll({
       include: [
         { model: Matches, as: 'teamHome', where: { inProgress: 0 } },
@@ -39,5 +39,5 @@ export default class LeaderboardRepository implements ILeaderboardRepository {
 
     const orderLeaderBoard = leaderBoard.sort(this.actions.orderTeams);
     return orderLeaderBoard;
-  }
+  };
 }
