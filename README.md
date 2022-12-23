@@ -2,7 +2,7 @@
 
 O Trybe Futebol Clube é um aplicativo para gerenciar o time de futebol do seu clube. Com ele, é possível adicionar jogadores, marcar jogos e acompanhar o desempenho da equipe.
 
-``` Instalação
+# Instalação
 
 Para instalar o Trybe Futebol Clube, siga os seguintes passos:
 
@@ -10,7 +10,7 @@ Para instalar o Trybe Futebol Clube, siga os seguintes passos:
 2. Instale as dependências do projeto usando o gerenciador de pacotes npm: `npm install`
 3. Inicie o aplicativo com o comando: `npm start`
 
-``` Uso
+# Uso
 
 Para usar o Trybe Futebol Clube, siga as instruções a seguir:
 
@@ -19,12 +19,12 @@ Para usar o Trybe Futebol Clube, siga as instruções a seguir:
 3. Para marcar um jogo, clique no botão "Adicionar Jogo" e preencha as informações do jogo.
 4. Para ver o desempenho da equipe, vá para a guia "Estatísticas".
 
-``` Requisitos de sistema
+# Requisitos de sistema
 
 - Node.js 8.0 ou posterior
 - npm 5.0 ou posterior
 
-``` Contribuições
+# Contribuições
 
 Se você quiser contribuir para o Trybe Futebol Clube, siga as seguintes instruções:
 
@@ -35,7 +35,7 @@ Se você quiser contribuir para o Trybe Futebol Clube, siga as seguintes instru�
 5. Envie as suas alterações para o seu fork no GitHub: `git push origin my-new-feature`
 6. Crie um novo pull request no GitHub para que suas alterações possam ser revisadas.
 
-``` Licença
+# Licença
 
 O Trybe Futebol Clube é distribuído sob a licença MIT. Consulte o arquivo [LICENSE](LICENSE) para obter mais informações.
 
