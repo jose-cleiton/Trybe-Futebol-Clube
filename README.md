@@ -1,16 +1,30 @@
-# Trybe Futebol Clube
+ # Trybe Futebol Clube
 
 O Trybe Futebol Clube é um aplicativo para gerenciar o time de futebol do seu clube. Com ele, é possível adicionar jogadores, marcar jogos e acompanhar o desempenho da equipe.
 
-# Instalação
+## Instalação
 
-Para instalar o Trybe Futebol Clube, siga os seguintes passos:
+Existem duas maneiras de instalar o Trybe Futebol Clube:
+
+### Instalação local
+
+Para instalar o Trybe Futebol Clube localmente, siga os seguintes passos:
 
 1. Faça o download do código-fonte do projeto do GitHub: https://github.com/jose-cleiton/Trybe-Futebol-Clube
 2. Instale as dependências do projeto usando o gerenciador de pacotes npm: `npm install`
 3. Inicie o aplicativo com o comando: `npm start`
 
-# Uso
+### Instalação via Docker
+
+Se você preferir usar o Docker para instalar o Trybe Futebol Clube, siga os seguintes passos:
+
+1. Faça o download do código-fonte do projeto do GitHub: https://github.com/jose-cleiton/Trybe-Futebol-Clube
+2. Baixe e instale o Docker e o Docker Compose em seu sistema: https://www.docker.com/
+3. Na raiz do projeto, crie um arquivo chamado `.env` e adicione as variáveis de ambiente necessárias (consulte o arquivo `.env.example` para ver os exemplos).
+4. Execute o comando `docker-compose build` para construir as imagens Docker necessárias.
+5. Execute o comando `docker-compose up` para iniciar o aplicativo.
+
+## Uso
 
 Para usar o Trybe Futebol Clube, siga as instruções a seguir:
 
@@ -19,12 +33,10 @@ Para usar o Trybe Futebol Clube, siga as instruções a seguir:
 3. Para marcar um jogo, clique no botão "Adicionar Jogo" e preencha as informações do jogo.
 4. Para ver o desempenho da equipe, vá para a guia "Estatísticas".
 
-# Requisitos de sistema
+## Requisitos de sistema
 
-- Node.js 8.0 ou posterior
-- npm 5.0 ou posterior
-
-# Contribuições
+- Node.js 8.0 ou posterior (apenas para instalaç
+## Contribuições
 
 Se você quiser contribuir para o Trybe Futebol Clube, siga as seguintes instruções:
 
@@ -35,10 +47,8 @@ Se você quiser contribuir para o Trybe Futebol Clube, siga as seguintes instru�
 5. Envie as suas alterações para o seu fork no GitHub: `git push origin my-new-feature`
 6. Crie um novo pull request no GitHub para que suas alterações possam ser revisadas.
 
-# Licença
+## Licença
 
 O Trybe Futebol Clube é distribuído sob a licença MIT. Consulte o arquivo [LICENSE](LICENSE) para obter mais informações.
 
-Espero que essas informações sejam úteis para você usar o Trybe Futebol Clube. Se você tiver alguma dúvida ou encontrar algum problema, não hesite em entrar em contato pelo e-mail jose_cleiton@hotmail.com. 
- Agradecemos sua colaboração e esperamos que aproveite o aplicativo!
-
+Espero que essas informações sejam úteis para você usar o Trybe Futebol Clube. Se você tiver alguma dúvida ou encontrar algum problema, não hesite em entrar em contato pelo e-mail jose_cleiton@hotmail.com. Agradecemos sua colaboração e esperamos que aproveite o aplicativo!
