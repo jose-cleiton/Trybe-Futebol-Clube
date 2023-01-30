@@ -3,7 +3,7 @@ services:
   frontend:
     build: ./frontend
     ports:
-      - 3000:3000
+      - ${FRONT_PORT_LOCALHOST}:${FRONT_EXPOSED_DOOR}
     platform: linux/x86_64
     working_dir: /app-frontend
     depends_on:
@@ -12,40 +12,40 @@ services:
     # Os `healthcheck` devem garantir que a aplicação
     # está operacional, antes de liberar o container
     healthcheck:
-      test: ["CMD", "lsof", "-t", "-i:3000"]  # Caso utilize outra porta interna para o front, altere ela aqui também
+      test: ["CMD", "lsof", "-t", "-i:${FRONT_PORT_LOCALHOST}"]  # Caso utilize outra porta interna para o front, altere ela aqui também
       timeout: 10s
       retries: 5
   backend:
     container_name: app_backend
     build: ./backend
     ports:
-      - 3001:3001
+      - ${BACK_PORT_LOCALHOST}:${BACK_EXPOSED_DOOR}
     platform: linux/x86_64
     working_dir: /app-backend
     depends_on:
       db:
         condition: service_healthy
     environment:
-      - APP_PORT=3001
-      - JWT_SECRET=jwt_secret
+      - APP_PORT=${APP_PORT}
+      - JWT_SECRET=${JWT_SECRET}
       # Os dados abaixo se referem ao container `db`
       # Dica: Relembre aqui da comunicação interna entre containers
-      - DB_USER=root
-      - DB_PASS=123456
-      - DB_HOST=db
-      - DB_PORT=3306
+      - DB_USER=${DB_USER}
+      - DB_PASS=${DB_PASS}
+      - DB_HOST=${DB_HOST}
+      - DB_PORT=${DB_PORT}
     healthcheck:
-      test: ["CMD", "lsof", "-t", "-i:3001"] # Caso utilize outra porta interna para o back, altere ela aqui também
+      test: ["CMD", "lsof", "-t", "-i:${APP_PORT}"] # Caso utilize outra porta interna para o back, altere ela aqui também
       timeout: 10s
       retries: 5
   db:
     image: mysql:8.0.21
-    container_name: db
+    container_name: ${CONTAINER_NAME}
     platform: linux/x86_64
     ports:
-      - 3002:3306
+      - ${DB_PORT_LOCALHOST}:${DB_PORT}
     environment:
-      - MYSQL_ROOT_PASSWORD=123456
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
     restart: 'always'
     healthcheck:
       test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"] # Deve aguardar o banco ficar operacional

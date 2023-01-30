@@ -9,7 +9,7 @@ export default class LoginService {
   login = async (data: LoginData): Promise<strVoid> => {
     const user = await this.repository.getUserByEmail(data.email);
 
-    if (!user) throw new ErrorType(401, 'Incorrect email or password');
+    if (!user) throw new ErrorType(401, 'Incorrect email');
 
     const token = JwToken.create(user);
 
