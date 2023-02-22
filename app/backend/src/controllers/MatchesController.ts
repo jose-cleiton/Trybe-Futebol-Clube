@@ -3,6 +3,12 @@ import { Request, Response } from 'express';
 import MatchesService from '../services/MatchesServices';
 
 export default class MatchesController {
+  static make(): MatchesController {
+    throw new Error('Method not implemented.');
+  }
+  start() {
+    throw new Error('Method not implemented.');
+  }
   constructor(private service : MatchesService) {}
 
   get = async (_req: Request, res: Response) => {

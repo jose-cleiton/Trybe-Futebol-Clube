@@ -4,6 +4,12 @@ import Validation from '../validation/Validation';
 import LoginService from '../services/LoginService';
 
 export default class LoginController {
+  static make(): LoginController {
+    throw new Error('Method not implemented.');
+  }
+  start() {
+    throw new Error('Method not implemented.');
+  }
   constructor(private service :LoginService) {}
 
   login = async (req: Request, res: Response) => {
