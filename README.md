@@ -4,7 +4,6 @@ O Trybe Futebol Clube é um aplicativo para gerenciar o time de futebol do seu c
 
 ## Instalação
 
-Existem duas maneiras de instalar o Trybe Futebol Clube:
 
 ### Instalação local
 
