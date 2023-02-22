@@ -11,18 +11,9 @@ Existem duas maneiras de instalar o Trybe Futebol Clube:
 Para instalar o Trybe Futebol Clube localmente, siga os seguintes passos:
 
 1. Faça o download do código-fonte do projeto do GitHub: https://github.com/jose-cleiton/Trybe-Futebol-Clube
-2. Instale as dependências do projeto usando o gerenciador de pacotes npm: `npm install`
 3. Inicie o aplicativo com o comando: `npm start`
 
-### Instalação via Docker
 
-Se você preferir usar o Docker para instalar o Trybe Futebol Clube, siga os seguintes passos:
-
-1. Faça o download do código-fonte do projeto do GitHub: https://github.com/jose-cleiton/Trybe-Futebol-Clube
-2. Baixe e instale o Docker e o Docker Compose em seu sistema: https://www.docker.com/
-3. Na raiz do projeto, crie um arquivo chamado `.env` e adicione as variáveis de ambiente necessárias (consulte o arquivo `.env.example` para ver os exemplos).
-4. Execute o comando `docker-compose build` para construir as imagens Docker necessárias.
-5. Execute o comando `docker-compose up` para iniciar o aplicativo.
 
 ## Uso
 
