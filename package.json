@@ -1,9 +1,12 @@
 {
-  "name": "trybe-futebol-club",
+  "name": "futebol-club",
   "version": "1.0.0",
-  "description": "Ao iniciar este projeto, você concorda com as diretrizes do Código de Ética e Conduta e do Manual da Pessoa Estudante da Trybe.",
+ 
   "main": "index.js",
   "scripts": {
+    "start": "cd /home/jose/dev/Trybe-Futebol-Clube/app/backend && npm install && if [ ! -f .env ]; then cp .env.example .env; fi && docker-compose build && docker-compose up -d && echo 'Open your browser and go to http://localhost:3000/leaderboard' && cd ..",
+
+
     "postinstall": "npm run install:apps",
     "install:apps": "./apps_install.sh",
     "pretest": "(cd ./app/backend && /bin/sh tsc_eval.sh)",
@@ -16,7 +19,7 @@
     "compose:down:dev": "(cd app && docker-compose -f docker-compose.dev.yml down --remove-orphans)",
     "logs": "cd app && docker-compose logs -f"
   },
-  "author": "Trybe",
+  "author": "José Cleiton",
   "devDependencies": {
     "@testing-library/jest-dom": "5.15.0",
     "@testing-library/react": "11.2.7",
